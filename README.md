@@ -1,288 +1,147 @@
 # 🤝 OpenCode Cowork
 
 <p align="center">
-  <strong>将 Claude-Cowork 的自主文件操作能力带入 OpenCode 终端环境</strong>
+  <strong>Autonomous AI assistant for complex file operations in OpenCode</strong>
 </p>
 
 <p align="center">
-  <a href="#-特性">特性</a> •
-  <a href="#-安装">安装</a> •
-  <a href="#-使用">使用</a> •
-  <a href="#-配置">配置</a> •
-  <a href="#-oh-my-opencode-集成">Oh My OpenCode</a> •
-  <a href="#-贡献">贡献</a>
+  English | <a href="./README_ZH.md">简体中文</a>
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/OpenCode-Plugin-blue" alt="OpenCode Plugin">
-  <img src="https://img.shields.io/badge/Claude-Agent%20SDK-orange" alt="Claude Agent SDK">
+  <img src="https://img.shields.io/badge/OpenCode-Command-blue" alt="OpenCode Command">
+  <img src="https://img.shields.io/badge/Zero-Dependencies-green" alt="Zero Dependencies">
   <img src="https://img.shields.io/badge/License-MIT-green" alt="License">
 </p>
 
 ---
 
-## 🎯 这是什么？
+## 🎯 What is this?
 
-OpenCode Cowork 是一个 [OpenCode](https://github.com/sst/opencode) 插件，将 [Claude-Cowork](https://github.com/DevAgentForge/Claude-Cowork) 的核心能力集成到终端环境中。
+OpenCode Cowork brings [Claude Cowork](https://www.anthropic.com/news/cowork)'s autonomous agent capabilities to [OpenCode](https://github.com/sst/opencode).
 
-通过简单的 `/cowork` 命令，你可以让 AI 自主完成复杂的文件操作任务：
+Instead of just answering questions, Cowork **actively completes tasks** - reading files, making edits, running commands, and verifying results autonomously.
 
 ```
-/cowork 重构 src/utils.ts，提取公共函数到单独的模块
+/cowork Reorganize the src folder, separate utils into their own modules
 ```
 
-AI 会自动：
-1. 📖 读取相关文件，理解代码结构
-2. 📝 制定重构计划
-3. ✏️ 逐步执行修改（每次都会请求确认）
-4. ✅ 验证结果
+Cowork will:
+1. 📖 Explore the codebase to understand the structure
+2. 📝 Create a reorganization plan
+3. ✏️ Execute file moves and edits step by step
+4. ✅ Verify everything works correctly
+5. 📋 Summarize what was done
 
-## ✨ 特性
+## ✨ Features
 
-- **🤖 自主执行** - AI 自动分析任务、探索代码、执行修改
-- **🔒 安全确认** - 每次文件操作都需要用户确认
-- **📺 流式输出** - 实时显示 AI 的思考过程和工具调用
-- **🔧 完整工具集** - 读取、写入、编辑、搜索、执行命令
-- **🔌 深度集成** - 与 Oh My OpenCode 无缝配合
+- **🤖 Autonomous Agent** - Works like a colleague, not just a chatbot
+- **📋 Task Planning** - Analyzes tasks and creates execution plans
+- **🔄 Progress Updates** - Shows what it's doing at each step
+- **🔒 Safe by Default** - Uses OpenCode's built-in permission system
+- **📦 Zero Dependencies** - Just one markdown file
+- **🔌 Model Agnostic** - Works with any model configured in OpenCode
 
-## 📋 前置要求
+## 📋 Prerequisites
 
-- [OpenCode](https://github.com/sst/opencode) 已安装
-- [Claude Code CLI](https://www.npmjs.com/package/@anthropic-ai/claude-code) 已安装并认证
-- `ANTHROPIC_API_KEY` 环境变量已设置
+- [OpenCode](https://github.com/sst/opencode) installed and configured
+
+That's it! No extra API key needed.
+
+## 🚀 Installation
+
+### One-line Install (Recommended)
 
 ```bash
-# 安装 Claude Code CLI
-npm install -g @anthropic-ai/claude-code
-
-# 认证
-claude
-
-# 设置 API Key
-export ANTHROPIC_API_KEY=your-api-key
+curl -fsSL https://raw.githubusercontent.com/Lucifer1H/open-cowork/main/install.sh | bash
 ```
 
-## 🚀 安装
-
-### 方式一：一键安装（推荐）
+### Or Clone & Install
 
 ```bash
 git clone https://github.com/Lucifer1H/open-cowork.git
-cd open-cowork
-./install.sh
+cd open-cowork && ./install.sh
 ```
 
-### 方式二：手动安装
+### Manual Installation
 
 ```bash
-# 1. 复制工具文件
-mkdir -p ~/.config/opencode/tool
-cp plugin/cowork.ts ~/.config/opencode/tool/cowork.ts
-
-# 2. 复制命令文件
 mkdir -p ~/.config/opencode/command
-cp command/cowork.md ~/.config/opencode/command/
-
-# 3. 安装依赖
-cd ~/.config/opencode
-npm install @anthropic-ai/claude-agent-sdk
+curl -fsSL https://raw.githubusercontent.com/Lucifer1H/open-cowork/main/command/cowork.md -o ~/.config/opencode/command/cowork.md
 ```
 
-### 方式三：项目级安装
+## 📖 Usage
 
 ```bash
-# 在你的项目目录中
-mkdir -p .opencode/tool .opencode/command
-cp plugin/cowork.ts .opencode/tool/cowork.ts
-cp command/cowork.md .opencode/command/
-```
-
-## 📖 使用
-
-### 基本用法
-
-```bash
-# 启动 OpenCode
+# Start OpenCode
 opencode
 
-# 使用 /cowork 命令
-/cowork <你的任务描述>
+# Use /cowork command
+/cowork <your task description>
 ```
 
-### 示例
+### Examples
 
 ```bash
-# 代码重构
-/cowork 将 src/components 中的类组件重构为函数式组件
+# Code refactoring
+/cowork Refactor the authentication module, extract validation logic
 
-# 生成文档
-/cowork 分析项目结构，生成详细的 README.md
+# File organization
+/cowork Reorganize the components folder by feature instead of type
 
-# Bug 修复
-/cowork 找出 auth.ts 中的安全漏洞并修复
+# Documentation
+/cowork Analyze the codebase and generate comprehensive API documentation
 
-# 代码分析
-/cowork 找出所有 TODO 注释，创建任务清单
+# Bug investigation
+/cowork Find why the login fails intermittently and fix it
 
-# 添加功能
-/cowork 为 User 模型添加邮箱验证功能
+# Code migration
+/cowork Convert all class components to functional components with hooks
+
+# Data processing
+/cowork Parse all JSON files in data/ and create a summary spreadsheet
 ```
 
-### 输出示例
+## ⚙️ Customization
 
-```
-╔══════════════════════════════════════════════════════════╗
-║ 🤖 Cowork 模式启动                                        ║
-╠══════════════════════════════════════════════════════════╣
-║ 📁 目录: /Users/dev/my-project                           ║
-║ 🧠 模型: sonnet                                          ║
-║ 🔧 工具: Read, Write, Edit, Glob, Grep, Bash             ║
-╠══════════════════════════════════════════════════════════╣
-║ 📋 任务:                                                  ║
-║   重构 src/utils.ts，提取公共函数到单独的模块              ║
-╚══════════════════════════════════════════════════════════╝
+Edit `~/.config/opencode/command/cowork.md` to customize the AI's behavior, add specific guidelines for your project, or change the execution flow.
 
-🔗 会话: abc123...
+## 🔌 Oh My OpenCode Integration
 
-────────────────────────────────────────────────────────────
-💭 思考 [轮次 1]:
-
-   首先，我需要读取 src/utils.ts 文件，了解其中包含哪些函数...
-
-🔨 工具调用 #1: Read
-   📖 读取: src/utils.ts
-   📤 结果预览:
-      export function formatDate(date: Date): string { ... }
-      export function debounce(fn: Function, delay: number) { ... }
-      ...
-
-────────────────────────────────────────────────────────────
-💭 思考 [轮次 2]:
-
-   我发现文件中有以下几类函数：
-   1. 日期处理函数
-   2. 工具函数（debounce, throttle）
-   3. 字符串处理函数
-   
-   我将创建三个独立模块...
-
-🔨 工具调用 #2: Write
-   ✏️ 写入: src/utils/date.ts
-   📝 内容: 156 字符
-
-════════════════════════════════════════════════════════════
-✅ Cowork 任务完成!
-
-📊 统计:
-   • 耗时: 45.2s
-   • 轮次: 8
-   • 工具调用: 12
-   • 费用: $0.0234
-   • Token: 3420 输入 / 1856 输出
-════════════════════════════════════════════════════════════
-```
-
-## ⚙️ 配置
-
-### 修改默认配置
-
-编辑 `~/.config/opencode/tool/cowork.ts` 中的 `DEFAULT_CONFIG`：
-
-```typescript
-const DEFAULT_CONFIG: CoworkConfig = {
-  model: "sonnet",           // opus | sonnet | haiku
-  maxTurns: 50,              // 最大交互轮数
-  permissionMode: "default", // default | acceptEdits | bypassPermissions
-  allowedTools: ["Read", "Write", "Edit", "Glob", "Grep", "Bash"],
-};
-```
-
-### 权限模式说明
-
-| 模式 | 说明 |
-|------|------|
-| `default` | 每次操作都需要确认（推荐） |
-| `acceptEdits` | 自动批准文件编辑，其他操作需确认 |
-| `bypassPermissions` | 完全自主，无需确认（谨慎使用） |
-
-## 🔌 Oh My OpenCode 集成
-
-如果你使用 [Oh My OpenCode](https://github.com/code-yeongyu/oh-my-opencode)，可以更深度地集成。
-
-### 作为自定义 Agent
-
-在 `oh-my-opencode.json` 中添加：
+If you use [Oh My OpenCode](https://github.com/code-yeongyu/oh-my-opencode), add to `oh-my-opencode.json`:
 
 ```json
 {
   "agents": {
     "cowork": {
-      "model": "anthropic/claude-sonnet-4-5",
-      "description": "Cowork 模式 - 自主读写文件完成复杂任务",
-      "prompt_append": "进入 Cowork 模式。自主完成任务，每次修改前说明，完成后验证。",
-      "permission": {
-        "edit": "ask",
-        "bash": "ask"
-      }
+      "description": "Cowork mode - Autonomously complete complex tasks",
+      "prompt_append": "Enter Cowork mode. Complete tasks autonomously, explain before each modification."
     }
   }
 }
 ```
 
-然后使用 `@cowork` 调用：
+Then use `@cowork` to invoke.
 
-```
-@cowork 重构这个文件
-```
+## 🤝 Contributing
 
-### 结合 ultrawork
+1. Fork this repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
 
-```
-ultrawork cowork: 重构整个 src/components 目录
-```
-
-详细集成指南请参考 [oh-my-opencode-integration.md](./oh-my-opencode-integration.md)。
-
-## 🛠️ 开发
-
-```bash
-# 克隆仓库
-git clone https://github.com/Lucifer1H/open-cowork.git
-cd open-cowork
-
-# 安装依赖
-npm install
-
-# TypeScript 检查
-npm run lint
-
-# 本地测试
-./install.sh
-```
-
-## 🤝 贡献
-
-欢迎贡献！请查看 [CONTRIBUTING.md](./CONTRIBUTING.md) 了解详情。
-
-1. Fork 本仓库
-2. 创建特性分支 (`git checkout -b feature/amazing-feature`)
-3. 提交更改 (`git commit -m 'Add amazing feature'`)
-4. 推送到分支 (`git push origin feature/amazing-feature`)
-5. 开启 Pull Request
-
-## 📄 许可证
+## 📄 License
 
 [MIT](./LICENSE)
 
-## 🙏 致谢
+## 🙏 Acknowledgments
 
-- [OpenCode](https://github.com/sst/opencode) - 强大的终端 AI 编码助手
-- [Oh My OpenCode](https://github.com/code-yeongyu/oh-my-opencode) - OpenCode 增强插件
-- [Claude-Cowork](https://github.com/DevAgentForge/Claude-Cowork) - 灵感来源
-- [Claude Agent SDK](https://github.com/anthropics/claude-agent-sdk-typescript) - 核心能力支持
+- [OpenCode](https://github.com/sst/opencode) - Powerful terminal AI coding assistant
+- [Claude-Cowork](https://github.com/DevAgentForge/Claude-Cowork) - Inspiration source
 
 ---
 
 <p align="center">
-  如果这个项目对你有帮助，请给一个 ⭐️
+  If this project helps you, please give it a ⭐️
 </p>

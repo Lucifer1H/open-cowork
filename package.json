@@ -1,13 +1,10 @@
 {
   "name": "opencode-cowork",
   "version": "1.0.0",
-  "description": "Bring Claude-Cowork's autonomous file operation capabilities to OpenCode terminal environment",
-  "main": "plugin/cowork.ts",
+  "description": "Bring autonomous file operation capabilities to OpenCode terminal environment",
   "scripts": {
-    "install:global": "cp plugin/cowork.ts ~/.config/opencode/tool/cowork.ts && cp command/cowork.md ~/.config/opencode/command/",
-    "install:local": "mkdir -p .opencode/tool .opencode/command && cp plugin/cowork.ts .opencode/tool/cowork.ts && cp command/cowork.md .opencode/command/",
-    "lint": "tsc --noEmit",
-    "test": "echo \"No tests yet\""
+    "install:global": "cp command/cowork.md ~/.config/opencode/command/",
+    "install:local": "mkdir -p .opencode/command && cp command/cowork.md .opencode/command/"
   },
   "repository": {
     "type": "git",
@@ -17,21 +14,9 @@
     "url": "https://github.com/Lucifer1H/open-cowork/issues"
   },
   "homepage": "https://github.com/Lucifer1H/open-cowork#readme",
-  "dependencies": {
-    "@anthropic-ai/claude-agent-sdk": "^0.2.7"
-  },
-  "devDependencies": {
-    "typescript": "^5.0.0",
-    "@types/node": "^20.0.0"
-  },
-  "peerDependencies": {
-    "@opencode-ai/plugin": "*"
-  },
   "keywords": [
     "opencode",
     "oh-my-opencode",
-    "claude",
-    "claude-code",
     "cowork",
     "ai-agent",
     "file-operations",
@@ -40,8 +25,5 @@
     "automation"
   ],
   "author": "",
-  "license": "MIT",
-  "engines": {
-    "node": ">=18.0.0"
-  }
+  "license": "MIT"
 }

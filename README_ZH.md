@@ -1,56 +1,127 @@
 # 🤝 OpenCode Cowork
 
 <p align="center">
-  <strong>将 Claude-Cowork 的自主文件操作能力带入 OpenCode 终端环境</strong>
+  <strong>在 OpenCode 中自主完成复杂任务的 AI 代理</strong>
 </p>
 
 <p align="center">
   <a href="./README.md">English</a> | 简体中文
 </p>
 
+<p align="center">
+  <img src="https://img.shields.io/badge/OpenCode-Command-blue" alt="OpenCode Command">
+  <img src="https://img.shields.io/badge/零依赖-green" alt="Zero Dependencies">
+  <img src="https://img.shields.io/badge/License-MIT-green" alt="License">
+</p>
+
 ---
 
 ## 🎯 这是什么？
 
-OpenCode Cowork 是一个 [OpenCode](https://github.com/sst/opencode) 插件，让你在终端中通过简单的 `/cowork` 命令，让 AI 自主完成复杂的文件操作任务。
+OpenCode Cowork 将 [Claude Cowork](https://www.anthropic.com/news/cowork) 的自主代理能力带入 [OpenCode](https://github.com/sst/opencode)。
+
+不只是回答问题，Cowork **主动完成任务** - 读取文件、进行编辑、运行命令、验证结果，全程自主执行。
 
 ```
-/cowork 重构 src/utils.ts，提取公共函数到单独的模块
+/cowork 重组 src 文件夹，将工具函数分离到独立模块
 ```
+
+Cowork 会：
+1. 📖 探索代码库，理解结构
+2. 📝 制定重组计划
+3. ✏️ 逐步执行文件移动和编辑
+4. ✅ 验证一切正常工作
+5. 📋 总结完成的工作
 
 ## ✨ 特性
 
-- **🤖 自主执行** - AI 自动分析任务、探索代码、执行修改
-- **🔒 安全确认** - 每次文件操作都需要用户确认
-- **📺 流式输出** - 实时显示 AI 的思考过程
-- **🔌 深度集成** - 与 Oh My OpenCode 无缝配合
+- **🤖 自主代理** - 像同事一样工作，而不只是聊天机器人
+- **📋 任务规划** - 分析任务并制定执行计划
+- **🔄 进度更新** - 每一步都展示正在做什么
+- **🔒 安全可控** - 使用 OpenCode 内置的权限系统
+- **📦 零依赖** - 只有一个 markdown 文件
+- **🔌 模型无关** - 使用你在 OpenCode 中配置的任何模型
 
-## 🚀 快速开始
+## 📋 前置要求
+
+- [OpenCode](https://github.com/sst/opencode) 已安装并配置
+
+就这些！不需要额外的 API Key。
+
+## 🚀 安装
+
+### 一键安装（推荐）
 
 ```bash
-# 前置要求
-npm install -g @anthropic-ai/claude-code
-export ANTHROPIC_API_KEY=your-api-key
+curl -fsSL https://raw.githubusercontent.com/Lucifer1H/open-cowork/main/install.sh | bash
+```
 
-# 安装
-git clone https://github.com/YOUR_USERNAME/open-cowork.git
-cd open-cowork
-./install.sh
+### 或者克隆安装
 
-# 使用
+```bash
+git clone https://github.com/Lucifer1H/open-cowork.git
+cd open-cowork && ./install.sh
+```
+
+### 手动安装
+
+```bash
+mkdir -p ~/.config/opencode/command
+curl -fsSL https://raw.githubusercontent.com/Lucifer1H/open-cowork/main/command/cowork.md -o ~/.config/opencode/command/cowork.md
+```
+
+## 📖 使用
+
+```bash
+# 启动 OpenCode
 opencode
-/cowork 你的任务描述
+
+# 使用 /cowork 命令
+/cowork <你的任务描述>
 ```
 
-## 📖 使用示例
+### 示例
 
 ```bash
-/cowork 将类组件重构为函数式组件
-/cowork 分析项目结构，生成 README.md
-/cowork 找出安全漏洞并修复
-/cowork 为 User 模型添加邮箱验证
+# 代码重构
+/cowork 重构认证模块，提取验证逻辑
+
+# 文件整理
+/cowork 按功能重新组织 components 文件夹
+
+# 生成文档
+/cowork 分析代码库并生成完整的 API 文档
+
+# Bug 调查
+/cowork 找出登录间歇性失败的原因并修复
+
+# 代码迁移
+/cowork 将所有类组件转换为带 hooks 的函数式组件
 ```
+
+## ⚙️ 自定义
+
+编辑 `~/.config/opencode/command/cowork.md` 可以自定义 AI 的行为、添加项目特定的指导原则或修改执行流程。
+
+## 🤝 贡献
+
+1. Fork 本仓库
+2. 创建特性分支 (`git checkout -b feature/amazing-feature`)
+3. 提交更改 (`git commit -m 'Add amazing feature'`)
+4. 推送到分支 (`git push origin feature/amazing-feature`)
+5. 开启 Pull Request
 
 ## 📄 许可证
 
-MIT
+[MIT](./LICENSE)
+
+## 🙏 致谢
+
+- [OpenCode](https://github.com/sst/opencode) - 强大的终端 AI 编码助手
+- [Claude Cowork](https://www.anthropic.com/news/cowork) - 灵感来源
+
+---
+
+<p align="center">
+  如果这个项目对你有帮助，请给一个 ⭐️
+</p>

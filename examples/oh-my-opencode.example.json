@@ -3,21 +3,8 @@
   
   "agents": {
     "cowork": {
-      "model": "anthropic/claude-sonnet-4-5",
       "description": "Cowork mode - Autonomous file operations for complex tasks",
-      "prompt_append": "You are now in Cowork mode. Autonomously complete tasks, explain before each modification, and verify results after completion.",
-      "permission": {
-        "edit": "ask",
-        "bash": "ask"
-      }
-    }
-  },
-  
-  "categories": {
-    "cowork": {
-      "model": "anthropic/claude-sonnet-4-5",
-      "temperature": 0.3,
-      "prompt_append": "Cowork mode: Analyze autonomously, execute step by step, verify results."
+      "prompt_append": "You are now in Cowork mode. Autonomously complete tasks: analyze the task, explore relevant files, create a plan, execute step by step, and verify results."
     }
   }
 }
