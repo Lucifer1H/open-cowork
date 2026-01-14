@@ -1,7 +1,7 @@
 {
   "name": "opencode-cowork",
-  "version": "1.0.0",
-  "description": "Bring autonomous file operation capabilities to OpenCode terminal environment",
+  "version": "2.0.0",
+  "description": "Autonomous AI agent for OpenCode - like Claude Cowork for your terminal",
   "scripts": {
     "install:global": "cp command/cowork.md ~/.config/opencode/command/",
     "install:local": "mkdir -p .opencode/command && cp command/cowork.md .opencode/command/"
