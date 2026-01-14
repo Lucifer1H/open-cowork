@@ -11,12 +11,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/YOUR_USERNAME/open-cowork.git"
+    "url": "git+https://github.com/Lucifer1H/open-cowork.git"
   },
   "bugs": {
-    "url": "https://github.com/YOUR_USERNAME/open-cowork/issues"
+    "url": "https://github.com/Lucifer1H/open-cowork/issues"
   },
-  "homepage": "https://github.com/YOUR_USERNAME/open-cowork#readme",
+  "homepage": "https://github.com/Lucifer1H/open-cowork#readme",
   "dependencies": {
     "@anthropic-ai/claude-agent-sdk": "^0.2.7"
   },
