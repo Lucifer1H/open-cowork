@@ -67,7 +67,7 @@ export ANTHROPIC_API_KEY=your-api-key
 ### 方式一：一键安装（推荐）
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/open-cowork.git
+git clone https://github.com/Lucifer1H/open-cowork.git
 cd open-cowork
 ./install.sh
 ```
@@ -247,7 +247,7 @@ ultrawork cowork: 重构整个 src/components 目录
 
 ```bash
 # 克隆仓库
-git clone https://github.com/YOUR_USERNAME/open-cowork.git
+git clone https://github.com/Lucifer1H/open-cowork.git
 cd open-cowork
 
 # 安装依赖

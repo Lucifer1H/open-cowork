@@ -6,7 +6,7 @@
 
 ### 报告 Bug
 
-1. 在 [Issues](https://github.com/YOUR_USERNAME/open-cowork/issues) 中搜索是否已有相同问题
+1. 在 [Issues](https://github.com/Lucifer1H/open-cowork/issues) 中搜索是否已有相同问题
 2. 如果没有，创建新 Issue，包含：
    - 问题描述
    - 复现步骤
@@ -55,7 +55,7 @@
 
 ```bash
 # 克隆仓库
-git clone https://github.com/YOUR_USERNAME/open-cowork.git
+git clone https://github.com/Lucifer1H/open-cowork.git
 cd open-cowork
 
 # 安装依赖

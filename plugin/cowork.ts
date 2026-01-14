@@ -3,7 +3,7 @@
  * 
  * Bring Claude-Cowork's autonomous file operation capabilities to OpenCode.
  * 
- * @see https://github.com/YOUR_USERNAME/open-cowork
+ * @see https://github.com/Lucifer1H/open-cowork
  */
 
 import { tool } from "@opencode-ai/plugin";
