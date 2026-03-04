@@ -2,7 +2,7 @@
 
 ## Status
 
-- [ ] Wave 0 Foundation
+- [ ] Wave 0 Foundation (in progress)
 - [ ] Wave 1 Safety & Approval
 - [ ] Wave 2 Operations
 - [ ] Wave 3 Ecosystem & Quality
@@ -12,8 +12,8 @@
 
 ### Wave 0
 
-- [ ] Task 1: add `src/core/models.cjs` and risk taxonomy
-- [ ] Validate: `node --test tests/core/models.test.js`
+- [x] Task 1: add `src/core/models.cjs` and risk taxonomy
+- [x] Validate: `node --test tests/core/models.test.js`
 
 ### Wave 1
 
