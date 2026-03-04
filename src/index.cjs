@@ -1,7 +1,14 @@
+const { PluginRegistry } = require('./core/plugin-registry.cjs');
+
 function createCoworkRuntime() {
-  return { version: '3.0.0-alpha' };
+  const registry = new PluginRegistry();
+  return {
+    version: '3.0.0-alpha',
+    registry
+  };
 }
 
 module.exports = {
-  createCoworkRuntime
+  createCoworkRuntime,
+  PluginRegistry
 };
