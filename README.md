@@ -14,6 +14,10 @@
   <img src="https://img.shields.io/badge/License-MIT-green" alt="License">
 </p>
 
+<p align="center">
+  <img src="./assets/cover.png" alt="OpenCode Cowork Cover" width="100%" />
+</p>
+
 ---
 
 ## 🎯 What is this?
@@ -91,6 +95,14 @@ opencode
 
 # Use /cowork command
 /cowork <your task description>
+```
+
+### 🤖 One-Command AI Deploy (OpenCode)
+
+Paste this command directly into OpenCode chat:
+
+```bash
+/cowork Clone https://github.com/Lucifer1H/open-cowork into the current workspace, run ./install.sh, then validate with npm test && npm run build && bash -n install.sh, and report the final status.
 ```
 
 ### Examples
