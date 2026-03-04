@@ -14,6 +14,10 @@
   <img src="https://img.shields.io/badge/License-MIT-green" alt="License">
 </p>
 
+<p align="center">
+  <img src="./assets/cover.png" alt="OpenCode Cowork Cover" width="100%" />
+</p>
+
 ---
 
 ## 🎯 What is this?
