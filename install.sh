@@ -20,7 +20,11 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}" 2>/dev/null)" && pwd 2>/dev/null
 if [ -n "$SCRIPT_DIR" ] && [ -f "$SCRIPT_DIR/command/cowork.md" ]; then
     # Local installation
     echo "📁 Installing from local files..."
-    cp "$SCRIPT_DIR/command/cowork.md" "$GLOBAL_COMMAND_DIR/"
+    if [ -f "$SCRIPT_DIR/dist/command/cowork.md" ]; then
+        cp "$SCRIPT_DIR/dist/command/cowork.md" "$GLOBAL_COMMAND_DIR/cowork.md"
+    else
+        cp "$SCRIPT_DIR/command/cowork.md" "$GLOBAL_COMMAND_DIR/cowork.md"
+    fi
 else
     # Remote installation
     echo "📥 Downloading from GitHub..."
