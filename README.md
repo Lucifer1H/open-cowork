@@ -93,14 +93,6 @@ opencode
 /cowork <your task description>
 ```
 
-### 🤖 One-Command AI Deploy (OpenCode)
-
-Paste this command directly into OpenCode chat:
-
-```bash
-/cowork Clone https://github.com/Lucifer1H/open-cowork into the current workspace, run ./install.sh, then validate with npm test && npm run build && bash -n install.sh, and report the final status.
-```
-
 ### Examples
 
 ```bash
