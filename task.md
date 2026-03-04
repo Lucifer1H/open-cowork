@@ -18,7 +18,7 @@
 ### Wave 1
 
 - [x] Task 2: add state machine (`src/core/task-session.cjs`)
-- [ ] Task 3: add policy engine (`src/core/policy-engine.cjs`)
+- [x] Task 3: add policy engine (`src/core/policy-engine.cjs`)
 - [ ] Task 4: add orchestrator approval flow (`src/core/orchestrator.cjs`)
 - [ ] Validate: `npm test`
 

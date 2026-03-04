@@ -8,6 +8,7 @@ const { BUILTIN_PLUGINS } = require('./plugins/index.cjs');
 const { loadCoworkConfig } = require('./config/load-config.cjs');
 const { createTaskRequest, RISK_LEVELS, MODES, RISK_POLICIES } = require('./core/models.cjs');
 const { createTaskSession, ALLOWED_TRANSITIONS } = require('./core/task-session.cjs');
+const { requiresApproval, annotatePlanRisks, POLICY_THRESHOLDS } = require('./core/policy-engine.cjs');
 
 function createCoworkRuntime(options = {}) {
   const registry = new PluginRegistry();
@@ -33,6 +34,8 @@ function createCoworkRuntime(options = {}) {
     createTaskContext,
     createTaskRequest,
     createTaskSession,
+    requiresApproval,
+    annotatePlanRisks,
     runPipeline,
     executePlan,
     validateResult,
@@ -47,6 +50,8 @@ module.exports = {
   createTaskContext,
   createTaskRequest,
   createTaskSession,
+  requiresApproval,
+  annotatePlanRisks,
   runPipeline,
   executePlan,
   validateResult,
@@ -55,5 +60,6 @@ module.exports = {
   RISK_LEVELS,
   MODES,
   RISK_POLICIES,
-  ALLOWED_TRANSITIONS
+  ALLOWED_TRANSITIONS,
+  POLICY_THRESHOLDS
 };
