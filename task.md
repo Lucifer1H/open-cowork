@@ -25,7 +25,7 @@
 ### Wave 2
 
 - [x] Task 5: scheduler core (`src/scheduler/*`)
-- [ ] Task 6: instruction resolver (`src/instructions/resolver.cjs`)
+- [x] Task 6: instruction resolver (`src/instructions/resolver.cjs`)
 - [ ] Task 7: event store + metrics (`src/observability/*`)
 - [ ] Validate: `npm test && npm run build`
 
