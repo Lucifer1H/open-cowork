@@ -11,9 +11,20 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
       
       - name: Validate command file exists
         run: test -f command/cowork.md
+
+      - name: Run tests
+        run: npm test
+
+      - name: Run build
+        run: npm run build
       
       - name: Validate install script
         run: |

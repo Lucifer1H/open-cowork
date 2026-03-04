@@ -1,8 +1,10 @@
 {
   "name": "opencode-cowork",
-  "version": "2.0.0",
+  "version": "3.0.0-beta.1",
   "description": "Autonomous AI agent for OpenCode - like Claude Cowork for your terminal",
   "scripts": {
+    "build": "node scripts/build.cjs",
+    "test": "node --test",
     "install:global": "cp command/cowork.md ~/.config/opencode/command/",
     "install:local": "mkdir -p .opencode/command && cp command/cowork.md .opencode/command/"
   },

@@ -39,8 +39,21 @@ Cowork will:
 - **📋 Task Planning** - Analyzes tasks and creates execution plans
 - **🔄 Progress Updates** - Shows what it's doing at each step
 - **🔒 Safe by Default** - Uses OpenCode's built-in permission system
-- **📦 Zero Dependencies** - Just one markdown file
+- **🧩 Plugin Runtime (v3 Beta)** - Built-in planner/executor/validator with capability plugins
+- **🔁 Strong Compatibility** - `/cowork` usage and `install.sh` stay unchanged
+- **📦 Zero External Dependencies** - Runtime and tests work without third-party npm packages
 - **🔌 Model Agnostic** - Works with any model configured in OpenCode
+
+## 🧱 v3 Architecture (Beta)
+
+`open-cowork` now uses a dual-track design:
+
+- Legacy adapter: keeps `command/cowork.md` compatible for existing users
+- Core runtime: `planner` + `executor` + `validator` + `reporter`
+- Capability plugins: `refactor`, `bugfix`, `docgen`, `migration`
+- Config profiles: `safe`, `balanced`, `aggressive`
+
+The command entrypoint remains `/cowork <task>`. Existing install and usage patterns remain valid.
 
 ## 📋 Prerequisites
 

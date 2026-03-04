@@ -39,8 +39,21 @@ Cowork 会：
 - **📋 任务规划** - 分析任务并制定执行计划
 - **🔄 进度更新** - 每一步都展示正在做什么
 - **🔒 安全可控** - 使用 OpenCode 内置的权限系统
-- **📦 零依赖** - 只有一个 markdown 文件
+- **🧩 插件化运行时（v3 Beta）** - 内置 planner/executor/validator 和能力插件
+- **🔁 强兼容** - `/cowork` 用法与 `install.sh` 保持不变
+- **📦 零外部依赖** - 运行时与测试不依赖第三方 npm 包
 - **🔌 模型无关** - 使用你在 OpenCode 中配置的任何模型
+
+## 🧱 v3 架构（Beta）
+
+`open-cowork` 现在采用双轨设计：
+
+- 兼容适配层：保留 `command/cowork.md`，保证老用户体验不变
+- 核心运行时：`planner` + `executor` + `validator` + `reporter`
+- 能力插件：`refactor`、`bugfix`、`docgen`、`migration`
+- 配置策略：`safe`、`balanced`、`aggressive`
+
+命令入口仍然是 `/cowork <task>`，现有安装和使用方式继续有效。
 
 ## 📋 前置要求
 

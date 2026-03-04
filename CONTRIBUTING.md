@@ -34,22 +34,22 @@
 
 ## 代码规范
 
-- 使用 TypeScript
+- 使用 Node.js CommonJS（`.cjs`）
 - 使用 2 空格缩进
 - 变量和函数使用 camelCase
 - 常量使用 UPPER_SNAKE_CASE
-- 添加 JSDoc 注释
+- 复杂逻辑添加必要注释
 
 ## Commit 规范
 
 使用语义化提交信息：
 
-- `Add:` 新功能
-- `Fix:` Bug 修复
-- `Docs:` 文档更新
-- `Refactor:` 代码重构
-- `Test:` 测试相关
-- `Chore:` 构建/工具相关
+- `feat:` 新功能
+- `fix:` Bug 修复
+- `docs:` 文档更新
+- `refactor:` 代码重构
+- `test:` 测试相关
+- `chore:` 构建/工具相关
 
 ## 开发环境
 
@@ -62,7 +62,9 @@ cd open-cowork
 npm install
 
 # 本地测试
-./install.sh
+npm test
+npm run build
+bash -n install.sh
 ```
 
 ## 问题？
