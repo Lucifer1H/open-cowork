@@ -124,6 +124,10 @@ opencode
 4. 推送到分支 (`git push origin feature/amazing-feature`)
 5. 开启 Pull Request
 
+## ⭐ Star 趋势图
+
+[![Star History Chart](https://api.star-history.com/svg?repos=Lucifer1H/open-cowork&type=Date)](https://www.star-history.com/#Lucifer1H/open-cowork&Date)
+
 ## 📄 许可证
 
 [MIT](./LICENSE)
