@@ -12,11 +12,14 @@ const { createTaskSession, ALLOWED_TRANSITIONS } = require('./core/task-session.
 const { requiresApproval, annotatePlanRisks, POLICY_THRESHOLDS } = require('./core/policy-engine.cjs');
 const { createScheduleStore, createOnceJob, createIntervalJob, pollDueJobs } = require('./scheduler/engine.cjs');
 const { resolveInstructionContext } = require('./instructions/resolver.cjs');
+const { createEventStore } = require('./observability/event-store.cjs');
+const { computeMetricsSnapshot } = require('./observability/metrics.cjs');
 
 function createCoworkRuntime(options = {}) {
   const registry = new PluginRegistry();
   const config = loadCoworkConfig({ cwd: options.cwd, profile: options.profile, homeDir: options.homeDir });
   const scheduleStore = createScheduleStore();
+  const eventStore = createEventStore();
 
   for (const plugin of BUILTIN_PLUGINS) {
     const enabled = config.plugins[plugin.id];
@@ -31,7 +34,8 @@ function createCoworkRuntime(options = {}) {
   }
 
   async function orchestrate(requestInput) {
-    return runTask(requestInput, {
+    const startedAt = Date.now();
+    const outcome = await runTask(requestInput, {
       plan,
       execute: async (executionPlan, request) => {
         const pluginId = executionPlan.pluginId;
@@ -43,6 +47,12 @@ function createCoworkRuntime(options = {}) {
       },
       verify: async (runResult) => ({ ok: runResult.ok !== false })
     });
+
+    const durationMs = Date.now() - startedAt;
+    const type = outcome.status === 'completed' ? 'task.completed' : 'task.failed';
+    eventStore.append({ type, durationMs, status: outcome.status });
+
+    return outcome;
   }
 
   return {
@@ -50,6 +60,7 @@ function createCoworkRuntime(options = {}) {
     registry,
     config,
     scheduleStore,
+    eventStore,
     plan,
     orchestrate,
     createTaskContext,
@@ -64,7 +75,8 @@ function createCoworkRuntime(options = {}) {
     createOnceJob,
     createIntervalJob,
     pollDueJobs,
-    resolveInstructionContext
+    resolveInstructionContext,
+    computeMetricsSnapshot
   };
 }
 
@@ -92,5 +104,7 @@ module.exports = {
   createOnceJob,
   createIntervalJob,
   pollDueJobs,
-  resolveInstructionContext
+  resolveInstructionContext,
+  createEventStore,
+  computeMetricsSnapshot
 };
