@@ -4,8 +4,8 @@
 
 - [x] Wave 0 Foundation
 - [x] Wave 1 Safety & Approval
-- [ ] Wave 2 Operations (in progress)
-- [ ] Wave 3 Ecosystem & Quality
+- [x] Wave 2 Operations
+- [ ] Wave 3 Ecosystem & Quality (in progress)
 - [ ] Final hardening and release docs
 
 ## Detailed Tasks
@@ -31,7 +31,7 @@
 
 ### Wave 3
 
-- [ ] Task 8: plugin manifest validation
+- [x] Task 8: plugin manifest validation
 - [ ] Task 9: golden task runner
 - [ ] Validate: `npm test && npm run build`
 
