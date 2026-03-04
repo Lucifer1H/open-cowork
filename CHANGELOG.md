@@ -5,6 +5,22 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [3.0.0-beta.2] - 2026-03-04
+
+### Added
+- approval gate orchestration with `plan_only` and `approvalToken` support
+- deterministic task session state machine and risk policy engine
+- scheduler core for once and interval jobs
+- global + project instruction layering
+- observability event store and metrics snapshot
+- plugin manifest compatibility validation
+- golden task regression runner (`npm run golden:run`)
+- docs consistency checker script (`scripts/docs-check.cjs`)
+
+### Changed
+- README and README_ZH now document approval flow, scheduling API, and instruction files
+- CONTRIBUTING includes golden runner in local validation workflow
+
 ## [3.0.0-beta.1] - 2026-03-04
 
 ### Added

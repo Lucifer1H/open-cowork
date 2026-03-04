@@ -5,6 +5,7 @@
   "scripts": {
     "build": "node scripts/build.cjs",
     "test": "node --test",
+    "docs:check": "node scripts/docs-check.cjs",
     "golden:run": "node scripts/golden-runner.cjs",
     "install:global": "cp command/cowork.md ~/.config/opencode/command/",
     "install:local": "mkdir -p .opencode/command && cp command/cowork.md .opencode/command/"

@@ -5,8 +5,8 @@
 - [x] Wave 0 Foundation
 - [x] Wave 1 Safety & Approval
 - [x] Wave 2 Operations
-- [ ] Wave 3 Ecosystem & Quality (in progress)
-- [ ] Final hardening and release docs
+- [x] Wave 3 Ecosystem & Quality
+- [x] Final hardening and release docs
 
 ## Detailed Tasks
 
@@ -37,8 +37,8 @@
 
 ### Hardening
 
-- [ ] Task 10: docs and CI hardening
-- [ ] Final verify: `npm test && npm run build && bash -n install.sh`
+- [x] Task 10: docs and CI hardening
+- [x] Final verify: `npm test && npm run build && bash -n install.sh`
 
 ## Execution Rule
 

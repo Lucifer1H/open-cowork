@@ -119,6 +119,47 @@ opencode
 
 Edit `~/.config/opencode/command/cowork.md` to customize the AI's behavior, add specific guidelines for your project, or change the execution flow.
 
+### Approval Gate and Plan Mode
+
+Runtime supports explicit planning and approval flow through request fields:
+
+```js
+const result = await runtime.orchestrate({
+  task: "Delete generated cache files",
+  mode: "plan_only",
+  riskPolicy: "balanced"
+});
+```
+
+When execution requires confirmation, pass `approvalToken`:
+
+```js
+await runtime.orchestrate({
+  task: "Delete generated cache files",
+  mode: "execute",
+  riskPolicy: "balanced",
+  approvalToken: "approved-token"
+});
+```
+
+### Scheduling and Instruction Layering
+
+You can use the scheduler core directly today (future `/schedule` command can map to this API):
+
+```js
+runtime.scheduleStore.add(
+  runtime.createOnceJob({
+    id: "nightly-docgen",
+    runAt: "2026-03-05T02:00:00.000Z",
+    payload: { task: "Generate docs" }
+  })
+);
+```
+
+Instruction layering is loaded from:
+- Global: `~/.config/opencode/cowork.instructions.json`
+- Project local: `.opencode/cowork.instructions.json`
+
 ## 🔌 Oh My OpenCode Integration
 
 If you use [Oh My OpenCode](https://github.com/code-yeongyu/oh-my-opencode), add to `oh-my-opencode.json`:
