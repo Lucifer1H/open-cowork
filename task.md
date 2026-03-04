@@ -2,8 +2,8 @@
 
 ## Status
 
-- [ ] Wave 0 Foundation (in progress)
-- [ ] Wave 1 Safety & Approval
+- [x] Wave 0 Foundation
+- [x] Wave 1 Safety & Approval
 - [ ] Wave 2 Operations
 - [ ] Wave 3 Ecosystem & Quality
 - [ ] Final hardening and release docs
@@ -19,8 +19,8 @@
 
 - [x] Task 2: add state machine (`src/core/task-session.cjs`)
 - [x] Task 3: add policy engine (`src/core/policy-engine.cjs`)
-- [ ] Task 4: add orchestrator approval flow (`src/core/orchestrator.cjs`)
-- [ ] Validate: `npm test`
+- [x] Task 4: add orchestrator approval flow (`src/core/orchestrator.cjs`)
+- [x] Validate: `npm test`
 
 ### Wave 2
 

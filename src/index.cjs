@@ -4,6 +4,7 @@ const { createTaskContext } = require('./core/task-context.cjs');
 const { runPipeline, executePlan } = require('./core/executor.cjs');
 const { validateResult } = require('./core/validator.cjs');
 const { createReporter } = require('./core/reporter.cjs');
+const { runTask } = require('./core/orchestrator.cjs');
 const { BUILTIN_PLUGINS } = require('./plugins/index.cjs');
 const { loadCoworkConfig } = require('./config/load-config.cjs');
 const { createTaskRequest, RISK_LEVELS, MODES, RISK_POLICIES } = require('./core/models.cjs');
@@ -26,11 +27,27 @@ function createCoworkRuntime(options = {}) {
     return planner.plan(task, context);
   }
 
+  async function orchestrate(requestInput) {
+    return runTask(requestInput, {
+      plan,
+      execute: async (executionPlan, request) => {
+        const pluginId = executionPlan.pluginId;
+        const plugin = registry.all().find((candidate) => candidate.id === pluginId);
+        if (!plugin) {
+          return { ok: true };
+        }
+        return plugin.run(executionPlan, request);
+      },
+      verify: async (runResult) => ({ ok: runResult.ok !== false })
+    });
+  }
+
   return {
     version: '3.0.0-alpha',
     registry,
     config,
     plan,
+    orchestrate,
     createTaskContext,
     createTaskRequest,
     createTaskSession,
@@ -52,6 +69,7 @@ module.exports = {
   createTaskSession,
   requiresApproval,
   annotatePlanRisks,
+  runTask,
   runPipeline,
   executePlan,
   validateResult,
