@@ -64,6 +64,7 @@ npm install
 # 本地测试
 npm test
 npm run build
+npm run golden:run -- --json
 bash -n install.sh
 ```
 

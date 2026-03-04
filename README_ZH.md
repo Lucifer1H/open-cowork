@@ -116,6 +116,47 @@ opencode
 
 编辑 `~/.config/opencode/command/cowork.md` 可以自定义 AI 的行为、添加项目特定的指导原则或修改执行流程。
 
+### 审批关口与计划模式
+
+运行时支持显式规划与审批流程，可以通过请求字段控制：
+
+```js
+const result = await runtime.orchestrate({
+  task: "删除生成的缓存文件",
+  mode: "plan_only",
+  riskPolicy: "balanced"
+});
+```
+
+当执行需要确认时，传入 `approvalToken`：
+
+```js
+await runtime.orchestrate({
+  task: "删除生成的缓存文件",
+  mode: "execute",
+  riskPolicy: "balanced",
+  approvalToken: "approved-token"
+});
+```
+
+### 调度与指令分层
+
+当前可以直接使用调度核心（未来 `/schedule` 命令可映射到该 API）：
+
+```js
+runtime.scheduleStore.add(
+  runtime.createOnceJob({
+    id: "nightly-docgen",
+    runAt: "2026-03-05T02:00:00.000Z",
+    payload: { task: "生成文档" }
+  })
+);
+```
+
+指令分层来源：
+- 全局：`~/.config/opencode/cowork.instructions.json`
+- 项目本地：`.opencode/cowork.instructions.json`
+
 ## 🤝 贡献
 
 1. Fork 本仓库

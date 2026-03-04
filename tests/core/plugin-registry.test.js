@@ -5,6 +5,12 @@ const { PluginRegistry } = require('../../src/core/plugin-registry.cjs');
 
 const refactorPlugin = {
   id: 'refactor',
+  manifest: {
+    name: '@tests/refactor',
+    version: '1.0.0',
+    runtime: '^3',
+    capabilities: ['plan', 'run', 'verify']
+  },
   canHandle: (task) => task.includes('refactor'),
   plan: () => ({ steps: [] }),
   run: async () => ({ ok: true }),
@@ -13,6 +19,12 @@ const refactorPlugin = {
 
 const bugfixPlugin = {
   id: 'bugfix',
+  manifest: {
+    name: '@tests/bugfix',
+    version: '1.0.0',
+    runtime: '^3',
+    capabilities: ['plan', 'run', 'verify']
+  },
   canHandle: (task) => task.includes('fix'),
   plan: () => ({ steps: [] }),
   run: async () => ({ ok: true }),

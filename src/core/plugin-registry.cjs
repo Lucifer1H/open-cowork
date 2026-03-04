@@ -1,12 +1,14 @@
 const { PluginContractError } = require('./errors.cjs');
+const { validatePluginManifest } = require('../plugins/manifest-validator.cjs');
 
 class PluginRegistry {
-  constructor() {
+  constructor(runtimeVersion = '3.0.0-alpha') {
     this.items = [];
+    this.runtimeVersion = runtimeVersion;
   }
 
   register(plugin, priority = 0) {
-    validatePlugin(plugin);
+    validatePlugin(plugin, this.runtimeVersion);
     this.items.push({ plugin, priority });
     this.items.sort((a, b) => b.priority - a.priority);
   }
@@ -22,12 +24,12 @@ class PluginRegistry {
   }
 }
 
-function validatePlugin(plugin) {
+function validatePlugin(plugin, runtimeVersion) {
   if (!plugin || typeof plugin !== 'object') {
     throw new PluginContractError('Plugin must be an object.');
   }
 
-  const requiredFields = ['id', 'canHandle', 'plan', 'run', 'verify'];
+  const requiredFields = ['id', 'manifest', 'canHandle', 'plan', 'run', 'verify'];
   for (const field of requiredFields) {
     if (!(field in plugin)) {
       throw new PluginContractError(`Plugin is missing required field: ${field}`);
@@ -37,6 +39,8 @@ function validatePlugin(plugin) {
   if (typeof plugin.id !== 'string' || plugin.id.trim().length === 0) {
     throw new PluginContractError('Plugin id must be a non-empty string.');
   }
+
+  validatePluginManifest(plugin.manifest, runtimeVersion);
 
   const requiredFunctions = ['canHandle', 'plan', 'run', 'verify'];
   for (const field of requiredFunctions) {

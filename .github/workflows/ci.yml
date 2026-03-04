@@ -25,6 +25,12 @@ jobs:
 
       - name: Run build
         run: npm run build
+
+      - name: Check docs coverage
+        run: npm run docs:check
+
+      - name: Run golden regression
+        run: npm run golden:run -- --json
       
       - name: Validate install script
         run: |

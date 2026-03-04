@@ -1,0 +1,22 @@
+{
+  "cases": [
+    {
+      "id": "plan-only-high-risk",
+      "request": {
+        "task": "delete old logs",
+        "mode": "plan_only",
+        "riskPolicy": "balanced"
+      },
+      "expectedStatus": "waiting_approval"
+    },
+    {
+      "id": "execute-low-risk",
+      "request": {
+        "task": "document api",
+        "mode": "execute",
+        "riskPolicy": "balanced"
+      },
+      "expectedStatus": "completed"
+    }
+  ]
+}
