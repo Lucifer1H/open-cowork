@@ -32,8 +32,8 @@
 ### Wave 3
 
 - [x] Task 8: plugin manifest validation
-- [ ] Task 9: golden task runner
-- [ ] Validate: `npm test && npm run build`
+- [x] Task 9: golden task runner
+- [x] Validate: `npm test && npm run build`
 
 ### Hardening
 
