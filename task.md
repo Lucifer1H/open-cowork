@@ -4,7 +4,7 @@
 
 - [x] Wave 0 Foundation
 - [x] Wave 1 Safety & Approval
-- [ ] Wave 2 Operations
+- [ ] Wave 2 Operations (in progress)
 - [ ] Wave 3 Ecosystem & Quality
 - [ ] Final hardening and release docs
 
@@ -24,7 +24,7 @@
 
 ### Wave 2
 
-- [ ] Task 5: scheduler core (`src/scheduler/*`)
+- [x] Task 5: scheduler core (`src/scheduler/*`)
 - [ ] Task 6: instruction resolver (`src/instructions/resolver.cjs`)
 - [ ] Task 7: event store + metrics (`src/observability/*`)
 - [ ] Validate: `npm test && npm run build`

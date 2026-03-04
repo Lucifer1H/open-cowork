@@ -10,10 +10,12 @@ const { loadCoworkConfig } = require('./config/load-config.cjs');
 const { createTaskRequest, RISK_LEVELS, MODES, RISK_POLICIES } = require('./core/models.cjs');
 const { createTaskSession, ALLOWED_TRANSITIONS } = require('./core/task-session.cjs');
 const { requiresApproval, annotatePlanRisks, POLICY_THRESHOLDS } = require('./core/policy-engine.cjs');
+const { createScheduleStore, createOnceJob, createIntervalJob, pollDueJobs } = require('./scheduler/engine.cjs');
 
 function createCoworkRuntime(options = {}) {
   const registry = new PluginRegistry();
   const config = loadCoworkConfig({ cwd: options.cwd, profile: options.profile });
+  const scheduleStore = createScheduleStore();
 
   for (const plugin of BUILTIN_PLUGINS) {
     const enabled = config.plugins[plugin.id];
@@ -46,6 +48,7 @@ function createCoworkRuntime(options = {}) {
     version: '3.0.0-alpha',
     registry,
     config,
+    scheduleStore,
     plan,
     orchestrate,
     createTaskContext,
@@ -56,7 +59,10 @@ function createCoworkRuntime(options = {}) {
     runPipeline,
     executePlan,
     validateResult,
-    createReporter
+    createReporter,
+    createOnceJob,
+    createIntervalJob,
+    pollDueJobs
   };
 }
 
@@ -79,5 +85,9 @@ module.exports = {
   MODES,
   RISK_POLICIES,
   ALLOWED_TRANSITIONS,
-  POLICY_THRESHOLDS
+  POLICY_THRESHOLDS,
+  createScheduleStore,
+  createOnceJob,
+  createIntervalJob,
+  pollDueJobs
 };
